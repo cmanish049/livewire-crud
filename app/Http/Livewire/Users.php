@@ -8,12 +8,14 @@ use Livewire\Component;
 
 class Users extends Component
 {
-    public $users, $name, $email, $body, $contact_id;
+    public $users, $name, $email, $body, $contact_id, $search;
     public $updateMode = false;
 
     public function render()
     {
-        $this->users = Contact::all();
+        $this->users = $this->search
+            ? Contact::where('name', 'like', '%' . $this->search .  '%')->get()
+            : Contact::get();
         return view('livewire.users');
     }
 

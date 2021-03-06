@@ -4,6 +4,7 @@
     @else
         @include('livewire.create')
     @endif
+    <input type="text" wire:model="search">
     <table class="table table-bordered mt-5">
         <thead>
             <tr>
